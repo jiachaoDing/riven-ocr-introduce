@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riven OCR Assistant - 裂罅 Mod 识别助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+        }
+
+        .tech-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #d946ef 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header -->
+    <nav class="fixed w-full z-50 px-6 py-4 bg-[#030712]/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 tech-gradient rounded-lg flex items-center justify-center">
+                    <i class="fas fa-bolt text-white text-sm"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight">Riven OCR <span class="text-blue-500">Assistant</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+                <a href="#features" class="hover:text-white transition">核心功能</a>
+                <a href="#workflow" class="hover:text-white transition">操作流程</a>
+                <a href="/privacy.html" class="hover:text-white transition">隐私政策</a>
+            </div>
+            <a href="#" class="px-5 py-2 rounded-full tech-gradient text-white text-sm font-semibold hover:opacity-90 transition shadow-lg shadow-blue-500/20">
+                立即下载
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px]"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[128px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-blue-400 mb-6">
+                <span class="mr-2">✨</span> 为 Warframe 玩家而生
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-bold tracking-tight mb-8">
+                让紫卡上架 <br/>
+                <span class="glow-text tech-gradient bg-clip-text text-transparent">快如闪电</span>
+            </h1>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                告别繁琐的手动录入。Riven OCR Assistant 采用先进的图像识别技术，一键识别紫卡属性并自动填表，助您在 warframe.market 极速开店。
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#" class="w-full sm:w-auto px-8 py-4 rounded-xl tech-gradient text-white font-bold text-lg hover:scale-105 transition shadow-2xl shadow-blue-500/40 flex items-center justify-center">
+                    <i class="fab fa-chrome mr-3"></i> 添加至 Chrome
+                </a>
+                <a href="#workflow" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-lg hover:bg-white/10 transition">
+                    了解详情
+                </a>
+            </div>
+            
+            <!-- Mockup/Preview -->
+            <div class="mt-20 relative mx-auto max-w-5xl group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div class="relative bg-[#0d1117] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    </div>
+                    <div class="aspect-video bg-[url('https://images.unsplash.com/photo-1614332287897-cdc485fa562d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center flex items-center justify-center">
+                        <div class="bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-white/10 text-center">
+                            <p class="text-blue-400 font-mono text-sm mb-2">> 正在解析紫卡图像...</p>
+                            <div class="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-2/3 h-full tech-gradient animate-[progress_2s_infinite]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">核心能力</h2>
+                <p class="text-gray-400">不仅仅是识别，更是完整的自动化体验</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- OCR -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6 text-2xl">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">智能图像识别</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        毫秒级解析武器名、词条数值、段位及极性。自研深度学习模型，针对 Warframe 字体深度优化。
+                    </p>
+                </div>
+                
+                <!-- Auto-fill -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 mb-6 text-2xl">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">一键自动填表</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        深度集成 market 页面。点击识别结果，瞬间模拟人工操作完成所有表单项填写，杜绝输入错误。
+                    </p>
+                </div>
+                
+                <!-- Market -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-500 mb-6 text-2xl">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">即时行情查询</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        内置 Riven Tracker 接口。识别即显示昨日底价与均价，助您在变幻莫测的市场中精准定价。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow -->
+    <section id="workflow" class="py-24 px-6 bg-white/[0.02]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">三步极速上架</h2>
+                <p class="text-gray-400">简单、直观、高效</p>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1">
+                        <div class="text-6xl font-black step-number mb-4">01</div>
+                        <h3 class="text-2xl font-bold mb-4">屏幕截图</h3>
+                        <p class="text-gray-400">在游戏中或通过外部工具截取紫卡属性界面。你可以通过快捷键直接粘贴到插件中。</p>
+                    </div>
+                    <div class="flex-1 glass-card p-4 rounded-xl rotate-2">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" class="rounded-lg shadow-2xl" alt="Screenshot">
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="flex-1">
+                        <div class="text-6xl font-black step-number mb-4 text-right md:text-left">02</div>
+                        <h3 class="text-2xl font-bold mb-4">自动识别</h3>
+                        <p class="text-gray-400">插件将图像发送至高可用 OCR 后端，瞬间提取所有关键属性，并在面板中清晰展示供确认。</p>
+                    </div>
+                    <div class="flex-1 glass-card p-4 rounded-xl -rotate-2">
+                        <div class="bg-gray-900 rounded-lg p-6 font-mono text-sm space-y-2">
+                            <div class="text-green-400">[SUCCESS] Weapon: Rubico</div>
+                            <div class="text-gray-400">+124.5% Critical Damage</div>
+                            <div class="text-gray-400">+145.2% Multishot</div>
+                            <div class="text-red-400">-34.2% Zoom</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1">
+                        <div class="text-6xl font-black step-number mb-4">03</div>
+                        <h3 class="text-2xl font-bold mb-4">一键上架</h3>
+                        <p class="text-gray-400">点击“写入页面”，插件会自动在 warframe.market 呼出拍卖窗口并填入所有数据。只需点击发布！</p>
+                    </div>
+                    <div class="flex-1 glass-card p-4 rounded-xl rotate-1">
+                        <div class="bg-blue-600 h-12 rounded-lg flex items-center justify-center font-bold shadow-lg shadow-blue-500/50">
+                            写入页面 (Write to Market)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center space-x-2">
+                <div class="w-6 h-6 tech-gradient rounded flex items-center justify-center">
+                    <i class="fas fa-bolt text-white text-[10px]"></i>
+                </div>
+                <span class="text-lg font-bold">Riven OCR Assistant</span>
+            </div>
+            <div class="flex space-x-8 text-sm text-gray-500">
+                <a href="/privacy.html" class="hover:text-white transition">隐私政策</a>
+                <a href="#" class="hover:text-white transition">用户协议</a>
+                <a href="#" class="hover:text-white transition">GitHub</a>
+            </div>
+            <p class="text-sm text-gray-600">
+                © 2026 Riven OCR Assistant. Not affiliated with Digital Extremes or warframe.market.
+            </p>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
+</body>
+</html>
