@@ -41,6 +41,40 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* 漂浮动画 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes float-delayed {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-15px) rotate(-2deg); }
+        }
+
+        .riven-card-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .riven-card-float-delayed {
+            animation: float-delayed 8s ease-in-out infinite;
+        }
+
+        .riven-card-container {
+            perspective: 1000px;
+        }
+
+        .riven-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+        }
+
+        .riven-card:hover {
+            transform: scale(1.1) rotate(0) translateY(-10px) !important;
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.6));
+            z-index: 50;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -82,7 +116,7 @@
                 <span class="glow-text tech-gradient bg-clip-text text-transparent">快如闪电</span>
             </h1>
             <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                告别繁琐的手动录入。Riven OCR Assistant 采用先进的图像识别技术，一键识别紫卡属性并自动填表，助您在 warframe.market 极速开店。
+                告别繁琐的手动录入。Riven OCR Assistant 采用图像识别技术，一键识别紫卡属性并自动填表，助您在 warframe.market 极速上架。
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#" class="w-full sm:w-auto px-8 py-4 rounded-xl tech-gradient text-white font-bold text-lg hover:scale-105 transition shadow-2xl shadow-blue-500/40 flex items-center justify-center">
@@ -93,24 +127,25 @@
                 </a>
             </div>
             
-            <!-- Mockup/Preview -->
-            <div class="mt-20 relative mx-auto max-w-5xl group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                <div class="relative bg-[#0d1117] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                    <div class="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 space-x-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-                    </div>
-                    <div class="aspect-video bg-[url('https://images.unsplash.com/photo-1614332287897-cdc485fa562d?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center flex items-center justify-center">
-                        <div class="bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-white/10 text-center">
-                            <p class="text-blue-400 font-mono text-sm mb-2">> 正在解析紫卡图像...</p>
-                            <div class="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
-                                <div class="w-2/3 h-full tech-gradient animate-[progress_2s_infinite]"></div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Riven Card Showcase -->
+            <div class="mt-24 relative mx-auto max-w-4xl h-[400px] md:h-[500px] riven-card-container flex justify-center items-center">
+                <!-- Card 1 (Left) -->
+                <div class="absolute left-[10%] md:left-[20%] z-10 riven-card-float-delayed">
+                    <img src="riven-pic/rivenCard2.png" alt="Riven Mod" class="riven-card w-48 md:w-64 -rotate-12 opacity-80 hover:opacity-100">
                 </div>
+                
+                <!-- Card 2 (Center) -->
+                <div class="absolute z-30 riven-card-float">
+                    <img src="riven-pic/rivenCard1.png" alt="Riven Mod" class="riven-card w-56 md:w-72 shadow-2xl">
+                </div>
+                
+                <!-- Card 3 (Right) -->
+                <div class="absolute right-[10%] md:right-[20%] z-20 riven-card-float-delayed" style="animation-delay: -2s;">
+                    <img src="riven-pic/rivenCard3.png" alt="Riven Mod" class="riven-card w-48 md:w-64 rotate-12 opacity-80 hover:opacity-100">
+                </div>
+
+                <!-- Decorative Glow -->
+                <div class="absolute inset-0 bg-blue-500/10 blur-[100px] -z-10 rounded-full"></div>
             </div>
         </div>
     </section>
@@ -131,7 +166,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-4">智能图像识别</h3>
                     <p class="text-gray-400 leading-relaxed text-sm">
-                        毫秒级解析武器名、词条数值、段位及极性。自研深度学习模型，针对 Warframe 字体深度优化。
+                        快速解析武器名、词条数值、段位及极性。自研深度学习模型，针对 Warframe 字体深度优化。
                     </p>
                 </div>
                 
@@ -177,7 +212,7 @@
                         <p class="text-gray-400">在游戏中或通过外部工具截取紫卡属性界面。你可以通过快捷键直接粘贴到插件中。</p>
                     </div>
                     <div class="flex-1 glass-card p-4 rounded-xl rotate-2">
-                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" class="rounded-lg shadow-2xl" alt="Screenshot">
+                        <img src="riven-pic/rivenCard1.png" class="rounded-lg shadow-2xl mx-auto w-64" alt="Screenshot">
                     </div>
                 </div>
 
