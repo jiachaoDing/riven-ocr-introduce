@@ -1,0 +1,13 @@
+# robots.txt for Riven Lens
+# https://riven.webutilitykit.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://riven.webutilitykit.com/sitemap.xml
+
+# Disallow patterns (if needed in future)
+# Disallow: /admin/
+# Disallow: /api/
+# Disallow: /tmp/
